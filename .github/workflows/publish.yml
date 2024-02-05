@@ -45,17 +45,13 @@ jobs:
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
 
       - name: Install frontend dependencies
-        run: pnpm install
-
-      - name: Build
-        uses: tauri-apps/tauri-action@v0
-        with:
-          args: ${{ matrix.platform == 'macos-latest' && '--target universal-apple-darwin' || '' }}
+        run: pnpm install     
 
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          args: ${{ matrix.platform == 'macos-latest' && '--target universal-apple-darwin' || '' }}
           tagName: v__VERSION__
           releaseName: 'Toolbox v__VERSION__'
           releaseBody: 'See the assets to download this version and install.'
