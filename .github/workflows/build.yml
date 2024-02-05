@@ -69,11 +69,11 @@ jobs:
         with:
           name: toolbox-${{ matrix.platform }}${{ env.TARGET != '' && format('-{0}', env.TARGET) || '' }}
           path: |
-            src-tauri/target/release/**/*.dmg
-            src-tauri/target/release/**/*.app
-            src-tauri/target/release/**/*.deb
-            src-tauri/target/release/**/*.AppImage
-            src-tauri/target/release/**/*.exe
-            src-tauri/target/release/**/*.msi
-            !src-tauri/target/release/deps
-            !src-tauri/target/release/build
+            src-tauri/*/release/**/*.dmg
+            src-tauri/*/release/**/*.app
+            src-tauri/*/release/**/*.deb
+            src-tauri/*/release/**/*.AppImage
+            src-tauri/*/release/**/*.exe
+            src-tauri/*/release/**/*.msi
+            !src-tauri/*/release/deps
+            !src-tauri/*/release/build
