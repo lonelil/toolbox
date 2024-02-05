@@ -69,7 +69,7 @@ jobs:
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: toolbox-${{ matrix.platform }}${{ env.TARGET != '' && format('-{0}', env.TARGET) || '' }}
+          name: toolbox-${{ matrix.platform }}${{ matrix.args }}
           path: |
             src-tauri/**/release/**/*.dmg
             src-tauri/**/release/**/*.app
