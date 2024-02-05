@@ -10,10 +10,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [ubuntu-20.04, windows-latest]
         include:
+          - platform: windows-latest
+            args: ""
+          - platform: ubuntu-latest
+            args: ""
           - platform: macos-latest
-            args: --target aarch64-apple-darwin,x86_64-apple-darwin,universal-apple-darwin
+            args: "--target aarch64-apple-darwin"
+          - platform: macos-latest
+            args: "--target x86_64-apple-darwin"
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -45,12 +50,12 @@ jobs:
       - name: Build
         uses: tauri-apps/tauri-action@v0
         with:
-          args: ${{ matrix.args || 'build' }}
+          args: ${{ matrix.args }}
 
       - name: Archive Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-${{ matrix.platform }}
+          name: toolbox-${{ matrix.platform }}${{ matrix.args != '' && format('-{0}', matrix.args[10:]) || '' }}
           path: |
             src-tauri/target/release/**/*.dmg
             src-tauri/target/release/**/*.app
