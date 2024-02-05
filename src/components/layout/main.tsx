@@ -15,14 +15,8 @@ export default function MainLayout(props: {
         data-tauri-drag-region
         className="fixed top-0 z-50 flex h-8 w-screen justify-between border-b-2 bg-background"
       >
-        <div className="flex items-center space-x-1.5 pl-2">
-          <img
-            src="/app-icon.png"
-            width={20}
-            height={20}
-            alt="Logo"
-            className="rounded-md"
-          />
+        <div className="white-block flex items-center space-x-1.5 pl-2">
+          <Icon icon="lucide:layout-grid" size={18} className="layout-icon"  />
           <h1 className="font-semibold">
             <Link to="/">Toolbox</Link>
           </h1>

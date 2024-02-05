@@ -19,5 +19,12 @@ export default function Tool() {
 
   const ToolComponent = tool.component;
 
-  if (ToolComponent) return <MainLayout>{ToolComponent}</MainLayout>;
+  if (ToolComponent)
+    return (
+      <MainLayout className="p-8">
+        <h1 className="text-2xl font-semibold">{tool.name}</h1>
+        <h2 className="text-sm text-muted-foreground mb-4">{tool.description}</h2>
+        {ToolComponent}
+      </MainLayout>
+    );
 }
