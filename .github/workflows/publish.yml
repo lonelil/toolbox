@@ -14,7 +14,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-20.04, windows-latest]
+        include:
+          - platform: windows-latest
+            args: ""
+          - platform: ubuntu-20.04
+            args: ""
+          - platform: macos-latest
+            args: "--target aarch64-apple-darwin"
+          - platform: macos-latest
+            args: "--target x86_64-apple-darwin"
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -34,8 +42,8 @@ jobs:
       - name: Install Rust Stable
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Add Rust target
-        if: matrix.platform == 'macos-latest'
+      - name: Add Rust target (aarch64-apple-darwin only)
+        if: matrix.platform == 'macos-latest' && matrix.args == '--target aarch64-apple-darwin'
         run: rustup target add aarch64-apple-darwin
 
       - name: Install Dependencies (Ubuntu only)
@@ -53,7 +61,7 @@ jobs:
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
-          args: ${{ matrix.platform == 'macos-latest' && '--target universal-apple-darwin' || '' }}
+          args: ${{ matrix.args }}
           tagName: v__VERSION__
           releaseName: "Toolbox v__VERSION__"
           releaseBody: "See the assets to download this version and install."
