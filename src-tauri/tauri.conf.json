@@ -53,6 +53,12 @@
         "width": 800,
         "height": 600
       }
-    ]
+    ],
+    "updater": {
+      "active": true,
+      "endpoints": [],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDFDQkRGODM2ODcwOTRBQgpSV1NybEhCb2c5L0xBWS9WWW1HZ1g4a2I0bEZJbkY5MFFXbnlxbk1nb2VvYStxWU1JekdJWkVneAo="
+    }
   }
 }
