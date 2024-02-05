@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <MainLayout className="container">
-      <h1 className="text-2xl font-semibold">Welcome to utils!</h1>
+      <h1 className="text-2xl font-semibold">Welcome to Toolbox!</h1>
 
       <form
         className="row"

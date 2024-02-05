@@ -6,7 +6,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "Utils",
+    "productName": "Toolbox",
     "version": "0.0.0"
   },
   "tauri": {
@@ -15,12 +15,23 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "window": {
+        "all": false,
+        "close": true,
+        "hide": true,
+        "show": true,
+        "maximize": true,
+        "minimize": true,
+        "unmaximize": true,
+        "unminimize": true,
+        "startDragging": true
       }
     },
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.lonelil.utils",
+      "identifier": "com.lonelil.toolbox",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
@@ -34,9 +45,11 @@
     },
     "windows": [
       {
+        "decorations": false,
         "fullscreen": false,
+        "maximized": true,
         "resizable": true,
-        "title": "Utils",
+        "title": "Toolbox",
         "width": 800,
         "height": 600
       }
