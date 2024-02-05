@@ -53,7 +53,10 @@ jobs:
           args: ${{ matrix.args }}
 
       - name: Set target
-        run: echo "TARGET=${{ matrix.args != '' && echo ${matrix.args:10} || '' }}" >> $GITHUB_ENV
+        run: |
+          if [[ "${{ matrix.args }}" != "" ]]; then
+            echo "TARGET=$(echo ${matrix.args} | cut -d' ' -f2)" >> $GITHUB_ENV
+          fi
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
