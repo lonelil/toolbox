@@ -7,7 +7,7 @@
   },
   "package": {
     "productName": "Toolbox",
-    "version": "0.0.2"
+    "version": "0.0.3"
   },
   "tauri": {
     "allowlist": {
@@ -56,7 +56,9 @@
     ],
     "updater": {
       "active": true,
-      "endpoints": [],
+      "endpoints": [
+        "https://github.com/lonelil/toolbox/releases/latest/download/latest.json"
+      ],
       "dialog": true,
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDFDQkRGODM2ODcwOTRBQgpSV1NybEhCb2c5L0xBWS9WWW1HZ1g4a2I0bEZJbkY5MFFXbnlxbk1nb2VvYStxWU1JekdJWkVneAo="
     }
