@@ -10,10 +10,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-20.04, windows-latest]
+        platform: [ubuntu-20.04, windows-latest]
         include:
           - os: macos-latest
-            targets: aarch64-apple-darwin,x86_64-apple-darwin
+            args: build --target aarch64-apple-darwin,x86_64-apple-darwin,universal-apple-darwin
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -45,8 +45,7 @@ jobs:
       - name: Build
         uses: tauri-apps/tauri-action@v0
         with:
-          args: build
-          target: ${{ matrix.targets }}
+          args: args: ${{ matrix.args || 'build' }}
 
       - name: Archive Artifacts
         uses: actions/upload-artifact@v4
