@@ -13,7 +13,7 @@ jobs:
         include:
           - platform: windows-latest
             args: ""
-          - platform: ubuntu-latest
+          - platform: ubuntu-20.04
             args: ""
           - platform: macos-latest
             args: "--target aarch64-apple-darwin"
@@ -39,6 +39,10 @@ jobs:
 
       - name: Install Rust Stable
         uses: dtolnay/rust-toolchain@stable
+
+      - name: Add Rust target
+        if: matrix.platform == 'macos-latest' && matrix.args != '--target x86_64-apple-darwin'
+        run: rustup target add aarch64-apple-darwin
 
       - name: Install Dependencies (Ubuntu only)
         if: matrix.platform == 'ubuntu-20.04'
