@@ -52,10 +52,13 @@ jobs:
         with:
           args: ${{ matrix.args }}
 
-      - name: Archive Artifacts
+      - name: Set target
+        run: echo "TARGET=${{ matrix.args != '' && matrix.args[10:] || '' }}" >> $GITHUB_ENV
+
+      - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: toolbox-${{ matrix.platform }}${{ matrix.args != '' && format('-{0}', matrix.args[10:]) || '' }}
+          name: toolbox-${{ matrix.platform }}${{ env.TARGET != '' && format('-{0}', env.TARGET) || '' }}
           path: |
             src-tauri/target/release/**/*.dmg
             src-tauri/target/release/**/*.app
