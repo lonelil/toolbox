@@ -6,6 +6,7 @@ import "./styles.css";
 
 import Home from "./pages/Home";
 import Settings from "./pages/Settings";
+import Tool from "./pages/Tool";
 
 const router = createHashRouter([
   {
@@ -15,6 +16,10 @@ const router = createHashRouter([
   {
     path: "/settings",
     element: <Settings />,
+  },
+  {
+    path: "/tool/:toolId",
+    element: <Tool />,
   },
   {
     path: "*",

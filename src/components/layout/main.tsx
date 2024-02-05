@@ -104,7 +104,7 @@ export default function MainLayout(props: {
       </div>
       <div
         className={cn(
-          "relative ml-16 mt-6 w-full overflow-x-hidden",
+          "relative ml-16 mt-8 w-full overflow-x-hidden",
           props.className,
         )}
       >
