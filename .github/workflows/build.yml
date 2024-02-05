@@ -11,6 +11,9 @@ jobs:
       fail-fast: false
       matrix:
         platform: [macos-latest, ubuntu-20.04, windows-latest]
+        include:
+          - os: macos-latest
+            targets: aarch64-apple-darwin,x86_64-apple-darwin
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -21,16 +24,16 @@ jobs:
           version: 8
           run_install: false
 
-      - name: Setup node
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "pnpm"
 
-      - name: Install Rust stable
+      - name: Install Rust Stable
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Install dependencies (ubuntu only)
+      - name: Install Dependencies (Ubuntu only)
         if: matrix.platform == 'ubuntu-20.04'
         run: |
           sudo apt-get update
@@ -39,9 +42,13 @@ jobs:
       - name: Install frontend dependencies
         run: pnpm install
 
-      - uses: tauri-apps/tauri-action@v0
+      - name: Build
+        uses: tauri-apps/tauri-action@v0
+        with:
+          args: build
+          targets: ${{ matrix.targets }}
 
-      - name: Archive production artifacts
+      - name: Archive Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-${{ matrix.platform }}
