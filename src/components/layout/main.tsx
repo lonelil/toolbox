@@ -1,9 +1,8 @@
 import React from "react";
-import { Button } from "@fluentui/react-components";
-import { Home24Regular, Settings24Regular } from "@fluentui/react-icons";
 import { Link } from "react-router-dom";
 import { cn } from "../../lib/utils";
 import { appWindow } from "@tauri-apps/api/window";
+import { Button } from "../ui/button";
 
 export default function MainLayout(props: {
   children: React.ReactNode;
@@ -13,7 +12,7 @@ export default function MainLayout(props: {
     <div className="flex">
       <div
         data-tauri-drag-region
-        className="fixed top-0 z-50 flex h-6 w-screen items-center justify-between bg-[#222222]"
+        className="fixed top-0 z-50 flex h-8 w-screen items-center justify-between border-b bg-background"
       >
         <div className="flex items-center space-x-1.5 pl-2">
           <img
@@ -27,22 +26,21 @@ export default function MainLayout(props: {
             <Link to="/">Toolbox</Link>
           </h1>
         </div>
-        <div className="space-x-2 pr-2">
+        <div className="flex flex-row space-x-2 pr-2">
           <Button
             onClick={() => void appWindow.minimize()}
-            className="h-full min-w-[0!important]"
-            appearance="subtle"
+            className="flex items-center justify-center"
+            variant={"ghost"}
           >
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAIAAADXZGvcAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kc8rw2Ecx1/biGaa4uDgsDRKjYZaXBy2GIXDNmW4bF/7ofbj2/e7peWqXFeUuPh14C/gqpyVIlJylDNxQV+f76Ym2efp+Tyv5/18Pp+e5/OANZJRsnqDF7K5ghYK+l3z0QVX0xN2nFjowxJTdHUmPBGhrr3fSqTYdb9Zq37cv9aynNAVsDQLjymqVhCeFJ5eLagmbwl3KOnYsvCJsEeTCwrfmHq8ys8mp6r8abIWCQXA2ibsSv3i+C9W0lpWWF6OO5spKj/3MV/iSOTmwrJ2y+xCJ0QQPy6mGCeAj0FGxfvoZ4gB2VEn31vJnyUvuYp4lRIaK6RIU8AjalGqJ2RNip6QkaFk9v9vX/Xk8FC1usMPjY+G8doDTZvwVTaMjwPD+DoE2wOc52r5+X0YeRO9XNPce+Bch9OLmhbfhrMN6LxXY1qsItlkWpNJeDmG1ii0X4F9sdqzn3OO7iCyJl91CTu70CvxzqVvKd9nyv0pfhoAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAVSURBVAiZY/z//z8DuYCJbJ0MDAwAaBUDAcKxLksAAAAASUVORK5CYII="
               alt="minimize"
-              width={12}
             />
           </Button>
           <Button
             onClick={() => void appWindow.toggleMaximize()}
-            className="h-full min-w-[0!important]"
-            appearance="subtle"
+            className="flex items-center justify-center"
+            variant={"ghost"}
           >
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kc8rw2Ecx1/biGaa4uDgsDRKjYZaXBy2GIXDNmW4bF/7ofbj2/e7peWqXFeUuPh14C/gqpyVIlJylDNxQV+f76Ym2efp+Tyv5/18Pp+e5/OANZJRsnqDF7K5ghYK+l3z0QVX0xN2nFjowxJTdHUmPBGhrr3fSqTYdb9Zq37cv9aynNAVsDQLjymqVhCeFJ5eLagmbwl3KOnYsvCJsEeTCwrfmHq8ys8mp6r8abIWCQXA2ibsSv3i+C9W0lpWWF6OO5spKj/3MV/iSOTmwrJ2y+xCJ0QQPy6mGCeAj0FGxfvoZ4gB2VEn31vJnyUvuYp4lRIaK6RIU8AjalGqJ2RNip6QkaFk9v9vX/Xk8FC1usMPjY+G8doDTZvwVTaMjwPD+DoE2wOc52r5+X0YeRO9XNPce+Bch9OLmhbfhrMN6LxXY1qsItlkWpNJeDmG1ii0X4F9sdqzn3OO7iCyJl91CTu70CvxzqVvKd9nyv0pfhoAAAAJcEhZcwAADsQAAA7EAZUrDhsAAADUSURBVDiN7ZQxbsIwGEZt1AEFqeoGB+g1uAEcgXu0ZynKyEU4AkvX9gwgEMN7LE4UggIJZGDgTfZv6fnzb8sh1FAzIAe2XgE4AhvgGxjVPSXA8pqoQf4LfDZKb6FGdQIsgL+KtDlpW4Ax8J/CflV7tu9wxD2Qq1mSLlJ9E9LCXQB5asEkzY+hSAbM2/YPmBdJU+2j2CSUgw6cCWrzQbcruM1L+GRCddd3wlUv7xB4B37UrBSq8V5hlTf1EGMcqjN13VI4jTEG9XCx2MfnUN/t4e+ryglyqi+I6thflQAAAABJRU5ErkJggg=="
@@ -52,8 +50,8 @@ export default function MainLayout(props: {
           </Button>
           <Button
             onClick={() => void appWindow.close()}
-            className="h-full min-w-[0!important]"
-            appearance="subtle"
+            className="flex items-center justify-center"
+            variant={"ghost"}
           >
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kc8rw2Ecx1/biGaa4uDgsDRKjYZaXBy2GIXDNmW4bF/7ofbj2/e7peWqXFeUuPh14C/gqpyVIlJylDNxQV+f76Ym2efp+Tyv5/18Pp+e5/OANZJRsnqDF7K5ghYK+l3z0QVX0xN2nFjowxJTdHUmPBGhrr3fSqTYdb9Zq37cv9aynNAVsDQLjymqVhCeFJ5eLagmbwl3KOnYsvCJsEeTCwrfmHq8ys8mp6r8abIWCQXA2ibsSv3i+C9W0lpWWF6OO5spKj/3MV/iSOTmwrJ2y+xCJ0QQPy6mGCeAj0FGxfvoZ4gB2VEn31vJnyUvuYp4lRIaK6RIU8AjalGqJ2RNip6QkaFk9v9vX/Xk8FC1usMPjY+G8doDTZvwVTaMjwPD+DoE2wOc52r5+X0YeRO9XNPce+Bch9OLmhbfhrMN6LxXY1qsItlkWpNJeDmG1ii0X4F9sdqzn3OO7iCyJl91CTu70CvxzqVvKd9nyv0pfhoAAAAJcEhZcwAADsQAAA7EAZUrDhsAAACdSURBVDiNrZXBEcMwCASRG1A9Sen+WzPuwS7ADYgTn/PDr8woiYzhzS2DgJMY6t6ghWQWZ5DMDboY6jZR0pFEXgbMHijJbMCcRN6UdFx01dWgbKrrHehXrQf6V3MHOpw7kni7m18C93v3hE+G14U+gvWgo7DJVckToS2HDiV0bUIXO/T0Qs0h3L4up/VfwAcUWsRQtwZdAr6AYqj7CRghR/2J9L5JAAAAAElFTkSuQmCC"
@@ -63,21 +61,19 @@ export default function MainLayout(props: {
           </Button>
         </div>
       </div>
-      <div className="fixed z-40 mt-6 flex h-full max-h-screen w-16 flex-col items-center gap-4 bg-[#222222] p-3">
+      <div className="fixed z-40 mt-8 flex h-full max-h-screen w-16 flex-col items-center gap-4 border-r-2 p-2">
         {[
           {
             href: "/",
-            icon: Home24Regular,
+            //icon: Home24Regular,
           },
           {
             href: "/settings",
-            icon: Settings24Regular,
+            //icon: Settings24Regular,
           },
         ].map((link, i) => (
           <Link to={link.href} key={i}>
-            <Button className="min-w-[0!important]" appearance="subtle">
-              <link.icon />
-            </Button>
+            <Button className="min-w-[0!important]">/</Button>
           </Link>
         ))}
       </div>
