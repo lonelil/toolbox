@@ -13,10 +13,16 @@ export default function MainLayout(props: {
     <div className="flex">
       <div
         data-tauri-drag-region
-        className="fixed z-50 top-0 w-screen flex justify-between bg-[#222222] h-6 items-center"
+        className="fixed top-0 z-50 flex h-6 w-screen items-center justify-between bg-[#222222]"
       >
         <div className="flex items-center space-x-1.5 pl-2">
-          <img src="/app-icon.png" width={20} height={20} alt="Logo" className="rounded-md" />
+          <img
+            src="/app-icon.png"
+            width={20}
+            height={20}
+            alt="Logo"
+            className="rounded-md"
+          />
           <h1 className="font-semibold">
             <Link to="/">Toolbox</Link>
           </h1>
@@ -57,7 +63,7 @@ export default function MainLayout(props: {
           </Button>
         </div>
       </div>
-      <div className="fixed z-40 flex h-full max-h-screen w-16 flex-col items-center gap-4 p-3 bg-[#222222] mt-6">
+      <div className="fixed z-40 mt-6 flex h-full max-h-screen w-16 flex-col items-center gap-4 bg-[#222222] p-3">
         {[
           {
             href: "/",
@@ -77,8 +83,8 @@ export default function MainLayout(props: {
       </div>
       <div
         className={cn(
-          "relative w-full overflow-x-hidden ml-16 mt-6",
-          props.className
+          "relative ml-16 mt-6 w-full overflow-x-hidden",
+          props.className,
         )}
       >
         {props.children}

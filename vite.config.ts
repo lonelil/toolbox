@@ -1,9 +1,10 @@
-import { defineConfig } from "vite";
+import million from "million/compiler";
+import { defineConfig, splitVendorChunkPlugin } from "vite";
 import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
-  plugins: [react()],
+  plugins: [million.vite({ auto: true }), react(), splitVendorChunkPlugin()],
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   //
