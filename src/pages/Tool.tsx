@@ -1,6 +1,7 @@
 import MainLayout from "@/components/layout/main";
 import Base64 from "@/components/tools/Base64";
 import DiffViewer from "@/components/tools/DiffViewer";
+import Hash from "@/components/tools/Hash";
 import UUID from "@/components/tools/UUID";
 import { useParams } from "react-router-dom";
 
@@ -22,6 +23,12 @@ export const tools = [
     name: "UUID Generator",
     description: "UUID Generator",
     component: <UUID />,
+  },
+  {
+    id: "hash",
+    name: "Hash Generator",
+    description: "Hash Generator",
+    component: <Hash />,
   },
 ];
 

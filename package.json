@@ -17,6 +17,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@tauri-apps/api": "^1.5.2",
     "class-variance-authority": "^0.7.0",
+    "crypto-js": "^4.2.0",
     "embla-carousel-react": "8.0.0-rc22",
     "immer": "^10.0.3",
     "lucide-react": "^0.323.0",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.5.8",
+    "@types/crypto-js": "^4.2.2",
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
