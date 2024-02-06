@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Textarea } from "../ui/textarea";
 import {
   Select,
@@ -12,7 +12,17 @@ type Base64Types = "encode" | "decode";
 
 export default function Base64Tool() {
   const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
   const [type, setType] = useState<Base64Types>("encode");
+
+  useEffect(() => {
+    try {
+      setOutput(type === "encode" ? btoa(input) : atob(input));
+    } catch (e) {
+      console.error(e);
+      setOutput("Invalid Base64 string!");
+    }
+  }, [input, type]);
 
   return (
     <>
@@ -30,10 +40,7 @@ export default function Base64Tool() {
           placeholder="Input"
           onChange={(e) => setInput(e.currentTarget.value)}
         />
-        <Textarea
-          placeholder="Output"
-          value={type === "encode" ? btoa(input) : atob(input)}
-        />
+        <Textarea placeholder="Output" value={output} />
       </div>
     </>
   );
