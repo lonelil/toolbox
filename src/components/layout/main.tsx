@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { cn } from "../../lib/utils";
 import { appWindow } from "@tauri-apps/api/window";
 import { Button } from "../ui/button";
-import Icon from "../icon";
+import { HomeIcon, SettingsIcon, LayoutGridIcon } from "lucide-react";
 
 export default function MainLayout(props: {
   children: React.ReactNode;
@@ -15,12 +15,10 @@ export default function MainLayout(props: {
         data-tauri-drag-region
         className="fixed top-0 z-50 flex h-8 w-screen justify-between border-b-2 bg-background"
       >
-        <div className="white-block flex items-center space-x-1.5 pl-2">
-          <Icon icon="lucide:layout-grid" size={18} className="layout-icon"  />
-          <h1 className="font-semibold">
-            <Link to="/">Toolbox</Link>
-          </h1>
-        </div>
+        <Link to="/" className="flex items-center space-x-1.5 pl-2">
+          <LayoutGridIcon size={18} fill="white" />
+          <h1 className="font-semibold">Toolbox</h1>
+        </Link>
         <div className="flex">
           <button
             className="inline-flex max-h-8 w-[46px] cursor-default items-center justify-center rounded-none bg-transparent text-black/90 hover:bg-black/[.05] active:bg-black/[.03] dark:text-white dark:hover:bg-white/[.06] dark:active:bg-white/[.04]"
@@ -82,16 +80,16 @@ export default function MainLayout(props: {
         {[
           {
             href: "/",
-            icon: "lucide:home",
+            icon: HomeIcon,
           },
           {
             href: "/settings",
-            icon: "lucide:settings",
+            icon: SettingsIcon,
           },
         ].map((link, i) => (
           <Link to={link.href} key={i}>
             <Button variant={"ghost"}>
-              <Icon icon={link.icon} />
+              <link.icon />
             </Button>
           </Link>
         ))}

@@ -1,6 +1,7 @@
 import MainLayout from "@/components/layout/main";
 import Base64 from "@/components/tools/Base64";
 import DiffViewer from "@/components/tools/DiffViewer";
+import UUID from "@/components/tools/UUID";
 import { useParams } from "react-router-dom";
 
 export const tools = [
@@ -15,6 +16,12 @@ export const tools = [
     name: "Diff Viewer",
     description: "Compare two versions of code or text files.",
     component: <DiffViewer />,
+  },
+  {
+    id: "uuid",
+    name: "UUID Generator",
+    description: "UUID Generator",
+    component: <UUID />,
   },
 ];
 
