@@ -1,13 +1,20 @@
 import MainLayout from "@/components/layout/main";
-import Base64Tool from "@/components/tools/Base64Tool";
+import Base64 from "@/components/tools/Base64";
+import DiffViewer from "@/components/tools/DiffViewer";
 import { useParams } from "react-router-dom";
 
-const tools = [
+export const tools = [
   {
     id: "base64",
     name: "Base64",
     description: "Base64 Encode/Decode",
-    component: <Base64Tool />,
+    component: <Base64 />,
+  },
+  {
+    id: "diff-viewer",
+    name: "Diff Viewer",
+    description: "Compare two versions of code or text files.",
+    component: <DiffViewer />,
   },
 ];
 
@@ -23,7 +30,9 @@ export default function Tool() {
     return (
       <MainLayout className="p-8">
         <h1 className="text-2xl font-semibold">{tool.name}</h1>
-        <h2 className="text-sm text-muted-foreground mb-4">{tool.description}</h2>
+        <h2 className="mb-4 text-sm text-muted-foreground">
+          {tool.description}
+        </h2>
         {ToolComponent}
       </MainLayout>
     );

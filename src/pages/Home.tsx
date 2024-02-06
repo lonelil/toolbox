@@ -15,6 +15,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
+import { tools } from "./Tool";
 
 export default function Home() {
   const { name } = useSettingsStore();
@@ -35,16 +36,16 @@ export default function Home() {
           className="w-full"
         >
           <CarouselContent>
-            {Array.from({ length: 5 }).map((_, index) => (
+            {tools.map((tool, index) => (
               <CarouselItem
                 key={index}
                 className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
               >
-                <Link to={"/tool/base64"}>
+                <Link to={`/tool/${tool.id}`}>
                   <Card>
                     <CardHeader>
-                      <CardTitle>Base64</CardTitle>
-                      <CardDescription>Base64</CardDescription>
+                      <CardTitle>{tool.name}</CardTitle>
+                      <CardDescription>{tool.description}</CardDescription>
                     </CardHeader>
                   </Card>
                 </Link>

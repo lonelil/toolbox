@@ -10,7 +10,7 @@ import {
 
 type Base64Types = "encode" | "decode";
 
-export default function Base64Tool() {
+export default function Base64() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [type, setType] = useState<Base64Types>("encode");
