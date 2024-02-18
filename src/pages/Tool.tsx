@@ -3,6 +3,7 @@ import Base64 from "@/components/tools/Base64";
 import DiffViewer from "@/components/tools/DiffViewer";
 import Hash from "@/components/tools/Hash";
 import UUID from "@/components/tools/UUID";
+import UrlEncode from "@/components/tools/UrlEncode";
 import { useParams } from "react-router-dom";
 
 export const tools = [
@@ -29,6 +30,12 @@ export const tools = [
     name: "Hash Generator",
     description: "Hash Generator",
     component: <Hash />,
+  },
+  {
+    id: "url",
+    name: "Url Encode",
+    description: "Url Encode/Decode",
+    component: <UrlEncode />,
   },
 ];
 
